@@ -21,15 +21,16 @@ namespace had
             _size = size;
             _color = color;
 
-
+            // create a white 1x1 texture and use _color as the tint when drawing
             _texture = new Texture2D(graphicsDevice, 1, 1);
-            _texture.SetData(new[] { Color.Red });
-
+            _texture.SetData(new[] { Color.White });
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, _size, _size), _color);
         }
+
         public void SetPosition(Vector2 newPos)
         {
             _position = newPos;
@@ -39,7 +40,16 @@ namespace had
         {
             return _position;
         }
-        
+
+        // expose bounds and size so Game1 can detect collisions
+        public Rectangle GetBounds()
+        {
+            return new Rectangle((int)_position.X, (int)_position.Y, _size, _size);
+        }
+
+        public int GetSize()
+        {
+            return _size;
+        }
     }
-    
 }
