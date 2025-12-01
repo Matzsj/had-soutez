@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace had
 {
-    public class ctverec
+    public class ctverec : IGameEntity
     {
         private Texture2D _texture;
         private Vector2 _position;
@@ -21,7 +17,7 @@ namespace had
             _size = size;
             _color = color;
 
-            // create a white 1x1 texture and use _color as the tint when drawing
+            // create a neutral white pixel and use _color as tint when drawing
             _texture = new Texture2D(graphicsDevice, 1, 1);
             _texture.SetData(new[] { Color.White });
         }
